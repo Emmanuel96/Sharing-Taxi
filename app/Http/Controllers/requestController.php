@@ -7,6 +7,7 @@ use App\requestsModel;
 
 use Illuminate\Http\Request;
 
+
 class requestController extends Controller {
 
 	/**
@@ -15,21 +16,79 @@ class requestController extends Controller {
 	 * @return Response
 	 */
 
-	//create Request
-	public function createRequest(Request $request)
+	public function createRequest($postId, $studentId, $requestStatus)
 	{
-		//for now student request is automatically 16000425
+		//then create the request
+		requestsModel::create([
+			'postId' => $postId,
+			'studentId' =>$studentId,
+			'requestStatus' => 0
+		]);
+		return 'success';
+	}
+
+
+	//create Request
+	public function doesRequestExist(Request $request)
+	{
+
+		//for now student request is automatically 1600428
 		$requestStatus = 0;
 		$postId = $request->postId;
 		$studentId = $request->studentId;
 
+		//check the db for the request
+		$requestFromDb = DB::table('requests')->where('studentId','=', $studentId)
+			->where('postId','=',$postId);
 
-		requestsModel::create([
-			'postId' => $postId,
-			'studentId' =>$studentId,
-			'requestStatus' => $requestStatus
-		]);
+		//if the request doesnt exist
+		if($requestFromDb->count() != 0)
+		{
+			//delete reqeust from table
+			$requestFromDb->delete();
+			return 'deleted';
+		}
+		else{
+			requestsModel::create([
+				'postId' => $postId,
+				'studentId' =>$studentId,
+				'requestStatus' => 0
+			]);
+			return 'success';
+		}
+	}
 
-		return 'success guys';
+	public function acceptRequest(Request $request )
+	{
+		$studentId = $request->studentId;
+		$postId = $request->postId;
+
+		////change the request status to 1
+		//meaning its been accepted
+		$request = DB::table('requests')->where('studentId','=',$studentId)
+			->where('postId','=',$postId)->update(array('requestStatus' => 1));
+	}
+
+	public function rejectRequest(Request $request )
+	{
+		$studentId = $request->studentId;
+		$postId = $request->postId;
+
+		//change the request status to 2
+		//meaning its been rejected
+		$request = DB::table('requests')->where('studentId','=',$studentId)
+			->where('postId','=',$postId)->update(array('requestStatus' => 2));
+	}
+
+	public function checkForRequest()
+	{
+		//Normally we would use the logged in user but user for now we use student id
+		$studentId = 1600428;
+
+		//get all the request for the logged in student
+		$studentRequests = DB::table('requests')->where('studentId','LIKE',$studentId)->get();
+
+		$resultsInJson = json_encode($studentRequests);
+		return $resultsInJson;
 	}
 }

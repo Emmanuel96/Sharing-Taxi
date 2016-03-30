@@ -16,17 +16,17 @@ class PostTableSeeder extends Seeder
         //Delete values already in database before seeding
         DB::table('posts')->delete();
 
-        $posts = array(
-            array(
-                'postId'=> '1',
-                'campus' => 'Verney',
-                'destination' => 'Milon Keynes',
-                'studentId' => '1600428',
-                'dateTime' => '27th June'
-            )
-        );
-
-        //insert seed post into database
-        DB::table('posts')->insert($posts);
+//        $posts = array(
+//            array(
+//                'postId'=> '1',
+//                'campus' => 'Verney',
+//                'destination' => 'Milon Keynes',
+//                'studentId' => '1600428',
+//                'dateTime' => '27th June'
+//            )
+//        );
+//
+//        //insert seed post into database
+//        DB::table('posts')->insert($posts);
     }
 }

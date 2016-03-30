@@ -13,7 +13,7 @@ class userTableSeeder extends Seeder
     public function run()
     {
         //Delete values already in database before seeding
-        DB::table('users')->delete();
+        DB::table('students')->delete();
 
         $users = array(
             array(
@@ -25,6 +25,6 @@ class userTableSeeder extends Seeder
         );
 
         //insert seed user into db
-        DB::table('users')->insert($users);
+        DB::table('students')->insert($users);
     }
 }

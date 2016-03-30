@@ -8,8 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePostTable' => $baseDir . '/database/migrations/2016_02_27_145431_create_post_table.php',
-    'CreateRequestTable' => $baseDir . '/database/migrations/2016_03_08_162208_create_request_table.php',
     'CreateRequestsTable' => $baseDir . '/database/migrations/2016_03_08_231928_create_requests_table.php',
+    'CreateStudentsTable' => $baseDir . '/database/migrations/2016_03_25_170555_create_students_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -451,5 +451,6 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'studentTableSeeder' => $baseDir . '/database/seeds/studentTableSeeder.php',
     'userTableSeeder' => $baseDir . '/database/seeds/userTableSeeder.php',
 );

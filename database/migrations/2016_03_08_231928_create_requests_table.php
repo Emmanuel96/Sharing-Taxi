@@ -18,6 +18,7 @@ class CreateRequestsTable extends Migration {
 			$table->string('postId');
 			$table->string('studentId');
 			$table->integer('requestStatus');
+			$table->string('destination');
 			$table->timestamps();
 		});
 	}

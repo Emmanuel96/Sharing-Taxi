@@ -15,9 +15,30 @@ body {
 }
 
 hr {
-    max-width: 50px;
     border-color: #f05f40;
     border-width: 3px;
+}
+
+.notif-post
+{
+    background-color: #BBBBBB;
+    width: 100%;
+    height: 130px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px #333333;
+}
+
+#notifPosts
+{
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#postJourneyBody
+{
+    min-height: 200px;
+    max-height: 200px;
 }
 
 hr.light {
@@ -200,7 +221,7 @@ header .header-content .header-content-inner h1 {
     font-weight: 700;
 }
 
-header .header-content .header-content-inner hr {
+header .header-content .header-content-inner {
     margin: 30px auto;
 }
 
